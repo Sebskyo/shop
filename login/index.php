@@ -11,7 +11,7 @@ echo "
 </form>
 ";
 
-if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
+if(isset($_REQUEST["username"]) && isset($_REQUEST["password"]) && !isset($_SESSION["username"])) {
 	$user = $_REQUEST["username"];
 	$passSent = $_REQUEST["password"]; // password sent by user
 	$passStored;

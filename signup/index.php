@@ -32,6 +32,7 @@ if( isset($_REQUEST["username"]) && isset($_REQUEST["password"]) &&
 	$sql = "INSERT INTO user (username, password, firstName, lastName, address, zip)
 			VALUES ('$username', '$password', '$firstName', '$lastName', '$address', '$zip');";
 	$result = mysqli_query($GLOBALS["conn"], $sql);
+	header("location:../login/");
 }
 
 closeConnection();

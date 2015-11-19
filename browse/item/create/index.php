@@ -20,14 +20,12 @@ if(isset($_SESSION["username"])) {
 			<input name='image' type='file'><br/>
 			Price:<br/>
 			<input name='price' type='number'><br/>
-			Category:<br/>
-			<input name='category' type='text'><br/>
 			<button type='submit'> CREATE </button>
 		</form>
 		";
 
 		if( isset($_REQUEST["title"]) && isset($_REQUEST["description"]) &&
-			isset($_FILES["image"]) && isset($_REQUEST["category"])) {
+			isset($_FILES["image"])) {
 
 			// Image upload
 			$fileType = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -51,10 +49,9 @@ if(isset($_SESSION["username"])) {
 			// Database
 			$title = mysqli_real_escape_string($GLOBALS["conn"], $_REQUEST["title"]);
 			$description = mysqli_real_escape_string($GLOBALS["conn"], $_REQUEST["description"]);
-			$category = mysqli_real_escape_string($GLOBALS["conn"], $_REQUEST["category"]);
 			$price = $_REQUEST["price"];
-			$sql = "INSERT INTO item (title, description, image, price, category)
-					VALUES ('$title', '$description', '$fileName', '$price', '$category');";
+			$sql = "INSERT INTO item (title, description, image, price)
+					VALUES ('$title', '$description', '$fileName', '$price');";
 			$result = mysqli_query($GLOBALS["conn"], $sql);
 		}
 	}
