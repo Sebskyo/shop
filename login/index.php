@@ -21,6 +21,7 @@ if(isset($_REQUEST["username"]) && isset($_REQUEST["password"]) && !isset($_SESS
 		$passStored = $info["password"];
 		if(password_verify($passSent, $passStored)) {
 			$_SESSION["username"] = $user;
+			header("location:../");
 		}
 	}
 	else

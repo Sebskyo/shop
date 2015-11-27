@@ -25,7 +25,9 @@ if(isset($_SESSION["username"])) {
 		";
 
 		if( isset($_REQUEST["title"]) && isset($_REQUEST["description"]) &&
-			isset($_FILES["image"])) {
+			isset($_FILES["image"]) && isset($_POST["submit"])) {
+
+			$isValid = false;
 
 			// Image upload
 			$fileType = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -40,19 +42,23 @@ if(isset($_SESSION["username"])) {
 				echo "Error";
 			}
 			else {
-				if(move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile))
+				if(move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
 					echo "image uploaded";
+					$isValid = true;
+				}
 				else
 					echo "error";
 			}
 
 			// Database
-			$title = mysqli_real_escape_string($GLOBALS["conn"], $_REQUEST["title"]);
-			$description = mysqli_real_escape_string($GLOBALS["conn"], $_REQUEST["description"]);
-			$price = $_REQUEST["price"];
-			$sql = "INSERT INTO item (title, description, image, price)
+			if($isValid) {
+				$title = mysqli_real_escape_string($GLOBALS["conn"], $_REQUEST["title"]);
+				$description = mysqli_real_escape_string($GLOBALS["conn"], $_REQUEST["description"]);
+				$price = $_REQUEST["price"];
+				$sql = "INSERT INTO item (title, description, image, price)
 					VALUES ('$title', '$description', '$fileName', '$price');";
-			$result = mysqli_query($GLOBALS["conn"], $sql);
+				$result = mysqli_query($GLOBALS["conn"], $sql);
+			}
 		}
 	}
 	else
@@ -60,3 +66,5 @@ if(isset($_SESSION["username"])) {
 }
 else
 	echo "Error: Not logged in";
+
+closeConnection();
