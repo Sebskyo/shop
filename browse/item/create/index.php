@@ -25,7 +25,7 @@ if(isset($_SESSION["username"])) {
 		";
 
 		if( isset($_REQUEST["title"]) && isset($_REQUEST["description"]) &&
-			isset($_FILES["image"]) && isset($_POST["submit"])) {
+			isset($_FILES["image"])) {
 
 			$isValid = false;
 

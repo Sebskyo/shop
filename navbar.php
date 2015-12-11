@@ -11,34 +11,34 @@ if(isset($_SESSION["username"])) {
     #container {
         width: 100%;
         height: 50px;
-        background-color: darkblue;
+        background-color: #F3F3F3;
     }
     #button-container {
         width: 50%;
         height: 50px;
         margin: 0 auto;
-        background-color: blue;
+        background-color: #333;
     }
     .button {
         float: left;
         width: 25%;
         height: 50px;
         text-align: center;
-        background-color: blue;
-        transition: background-color 1s;
+        background-color: #F3F3F3;
+        transition: background-color 0.5s;
+    }
+    .button:hover {
+        background-color: #333;
     }
     .navlink {
-        color: white;
+        color: #333;
         text-decoration: none;
         font-size: 40px;
         font-family: "Verdana";
-        transition: color 1s;
+        transition: color 0.5s;
     }
     .navlink:hover {
-        color: black;
-    }
-    .button:hover {
-        background-color: white;
+        color: #F3F3F3;
     }
 </style>
 

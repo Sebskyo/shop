@@ -1,5 +1,6 @@
 <?php
 include_once "../../connect.php";
+include_once "../../navbar.php";
 
 if(isset($_REQUEST["itemID"])) {
 	$itemID = $_REQUEST["itemID"];
@@ -17,6 +18,15 @@ if(isset($_REQUEST["itemID"])) {
 		<img src='../../image/".$image."'/><br/>
 		".$price."<br/>
 		<p>".$description."</p>
+
+		<form method='post'>
+			<input type='number' name='amount' value='1'/>
+			<button type='submit'> ADD2CART </button>
+		</form>
 		";
+
+		if(isset($_REQUEST["amount"]) && isset($_SESSION["username"])) {
+			array_push($_SESSION["cart"], [$itemID, $_REQUEST["amount"]]);
+		}
 	}
 }
