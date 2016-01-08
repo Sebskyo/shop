@@ -1,3 +1,8 @@
 <?php
 include_once "../navbar.php";
-echo "<a href='checkout'>lolz</a>";
+if (isset($_SESSION["username"])) {
+	echo "<a href='checkout'>lolz</a>";
+}
+else {
+	header("location:..");
+}

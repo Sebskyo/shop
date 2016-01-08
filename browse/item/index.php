@@ -26,7 +26,8 @@ if(isset($_REQUEST["itemID"])) {
 		";
 
 		if(isset($_REQUEST["amount"]) && isset($_SESSION["username"])) {
-			array_push($_SESSION["cart"], [$itemID, $_REQUEST["amount"]]);
+			array_push($_SESSION["cart"], [(int)$itemID, (int)$_REQUEST["amount"]]);
+			header("location:../../user/checkout/");
 		}
 	}
 }

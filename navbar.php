@@ -51,7 +51,7 @@ if(isset($_SESSION["username"])) {
             <div class="button">browse</div>
         </a>
         <a class="navlink" href="/shop/user/">
-            <div class="button"><?php echo $user;?></div>
+            <div class="button"><?php if($isLoggedIn) echo $user;?></div>
         </a>
         <?php
         if($isLoggedIn)
