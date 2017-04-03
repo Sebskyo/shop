@@ -1,0 +1,5 @@
+pipeline:
+  build:
+    image: php:latest
+    commands:
+      - for f in $(find . -name "*.php"); do php -l $f; done
